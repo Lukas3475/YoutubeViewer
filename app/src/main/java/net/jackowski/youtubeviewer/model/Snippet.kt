@@ -4,7 +4,7 @@ data class Snippet(
     var publishedAt: String = "",
     var title:String = "",
     var description: String = "",
-    var thumbnails: List<Thumbnail> = ArrayList(),
+    var thumbnails: Thumbnail = Thumbnail(),
     var channelTitle: String = "",
     var defaultLanguage: String = "",
     var localized: Localized = Localized(),
