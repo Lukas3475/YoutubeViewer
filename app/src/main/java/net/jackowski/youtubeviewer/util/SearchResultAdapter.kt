@@ -1,19 +1,17 @@
 package net.jackowski.youtubeviewer.util
 
 import android.graphics.BitmapFactory
-import android.os.AsyncTask
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import net.jackowski.youtubeviewer.MainActivity
 import net.jackowski.youtubeviewer.R
+import net.jackowski.youtubeviewer.SearchResultDetailsFragment
 import net.jackowski.youtubeviewer.model.SearchResult
 import java.net.URL
 import java.util.concurrent.Executors
@@ -37,15 +35,15 @@ class SearchResultAdapter(
         holder.author.text = searchResult.snippet.channelTitle
         holder.thumbnail.layoutParams.height = searchResult.snippet.thumbnails.high.height
         holder.thumbnail.layoutParams.width = searchResult.snippet.thumbnails.high.width
-        getThumbnails(holder, searchResult)
-        holder.bindClickEvent()
+        getThumbnail(holder, searchResult)
+        holder.bindClickEvent(mainActivity, searchResults, searchResult)
     }
 
     override fun getItemCount(): Int {
         return searchResults.size
     }
 
-    private fun getThumbnails(holder: SearchResultHolder, searchResult: SearchResult) {
+    private fun getThumbnail(holder: SearchResultHolder, searchResult: SearchResult) {
         Executors.newSingleThreadExecutor().execute {
             try {
                 val image =
@@ -64,9 +62,10 @@ class SearchResultAdapter(
         val author: TextView = itemView.findViewById(R.id.searchResultAuthor)
         val thumbnail: ImageView = itemView.findViewById(R.id.searchResultThumbnail)
 
-        fun bindClickEvent(){
+        fun bindClickEvent(mainActivity: MainActivity, searchResults: List<SearchResult>, searchResult: SearchResult) {
             itemView.setOnClickListener {
-                Log.d("Dupa", "Dupaaaaaa")
+                mainActivity.supportFragmentManager.beginTransaction()
+                    .replace(R.id.mainLayout, SearchResultDetailsFragment(searchResults, searchResult)).commit()
             }
         }
     }

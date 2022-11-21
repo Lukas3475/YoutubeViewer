@@ -1,6 +1,5 @@
 [
     {
-        "kind": "youtube#video",
         "snippet": {
             "publishedAt": "2022-10-14T16:00:07Z",
             "title": "blink-182 - EDGING (Official Video)",
@@ -47,7 +46,6 @@
         }
     },
     {
-        "kind": "youtube#video",
         "snippet": {
             "publishedAt": "2022-10-15T16:37:32Z",
             "title": "We Off-Road Test a Corvette....and 100% Didn't Break it",
@@ -89,7 +87,6 @@
         }
     },
     {
-        "kind": "youtube#video",
         "snippet": {
             "publishedAt": "2022-10-15T15:00:20Z",
             "title": "Minecraft Manhunt, But I Torture My Hunter REMATCH...",
@@ -130,7 +127,6 @@
         }
     },
     {
-        "kind": "youtube#video",
         "snippet": {
             "publishedAt": "2022-10-15T14:15:00Z",
             "title": "Catch the Shiny Pokémon Alphabet Challenge",
@@ -171,7 +167,6 @@
         }
     },
     {
-        "kind": "youtube#video",
         "snippet": {
             "publishedAt": "2022-10-15T16:12:05Z",
             "title": "venice, italy",
@@ -213,7 +208,6 @@
         }
     },
     {
-        "kind": "youtube#video",
         "snippet": {
             "publishedAt": "2022-10-14T19:00:27Z",
             "title": "Diddy - Gotta Move On (ft. Bryson Tiller, Yung Miami, Ashanti) [Queens Remix]",
@@ -260,7 +254,6 @@
         }
     },
     {
-        "kind": "youtube#video",
         "snippet": {
             "publishedAt": "2022-10-14T04:00:23Z",
             "title": "Lil Baby - California Breeze (Official Video)",
@@ -309,7 +302,6 @@
         }
     },
     {
-        "kind": "youtube#video",
         "snippet": {
             "publishedAt": "2022-10-15T16:00:10Z",
             "title": "I'm going through a lot...",
@@ -351,7 +343,6 @@
         }
     },
     {
-        "kind": "youtube#video",
         "snippet": {
             "publishedAt": "2022-10-15T15:00:12Z",
             "title": "If I Laugh, a Pokémon Dies #12",
@@ -391,7 +382,6 @@
         }
     },
     {
-        "kind": "youtube#video",
         "snippet": {
             "publishedAt": "2022-10-15T10:59:30Z",
             "title": "BTS \"Run BTS\" Full Performance",

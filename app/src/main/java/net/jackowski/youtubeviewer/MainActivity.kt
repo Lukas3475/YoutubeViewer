@@ -1,15 +1,11 @@
 package net.jackowski.youtubeviewer
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.children
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import net.jackowski.youtubeviewer.model.SearchResult
-import net.jackowski.youtubeviewer.util.SearchResultAdapter
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var searchResults: List<SearchResult>
@@ -19,9 +15,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         loadSearches()
         setContentView(R.layout.activity_main)
-        val view = findViewById<RecyclerView>(R.id.searchResultsView)
-        view.layoutManager = LinearLayoutManager(this)
-        view.adapter = SearchResultAdapter(this, searchResults)
+
+        supportFragmentManager.beginTransaction()
+            .add(R.id.mainLayout, SearchResultsFragment(searchResults)).commit()
     }
 
 
@@ -37,5 +33,10 @@ class MainActivity : AppCompatActivity() {
             ).bufferedReader().use { it.readText() },
             object : TypeToken<List<SearchResult>>() {}.type
         )
+        searchResults = searchResults.filter {
+            !it.contentDetails.regionRestriction.blocked.contains(Locale.getDefault().country) || it.contentDetails.regionRestriction.allowed.contains(
+                Locale.getDefault().country
+            )
+        }
     }
 }
