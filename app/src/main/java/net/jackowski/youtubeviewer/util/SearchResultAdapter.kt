@@ -51,7 +51,9 @@ class SearchResultAdapter(
                     holder.thumbnail.setImageBitmap(image)
                 }
             } catch (e: java.lang.Exception) {
-                e.printStackTrace()
+                Handler(Looper.getMainLooper()).post {
+                    holder.thumbnail.setImageResource(R.drawable.placeholder)
+                }
             }
         }
     }

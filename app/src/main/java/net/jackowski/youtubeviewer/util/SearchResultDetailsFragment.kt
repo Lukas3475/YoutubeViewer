@@ -86,7 +86,9 @@ class SearchResultDetailsFragment(
                     imageView.setImageBitmap(image)
                 }
             } catch (e: java.lang.Exception) {
-                e.printStackTrace()
+                Handler(Looper.getMainLooper()).post {
+                    imageView.setImageResource(R.drawable.placeholder)
+                }
             }
         }
     }
