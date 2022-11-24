@@ -11,7 +11,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import net.jackowski.youtubeviewer.MainActivity
 import net.jackowski.youtubeviewer.R
-import net.jackowski.youtubeviewer.SearchResultDetailsFragment
 import net.jackowski.youtubeviewer.model.SearchResult
 import java.net.URL
 import java.util.concurrent.Executors

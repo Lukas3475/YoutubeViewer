@@ -7,5 +7,4 @@
     tools:context=".MainActivity"
     android:background="#DBDADA"
     android:id="@+id/mainLayout">
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,15 +1,15 @@
-package net.jackowski.youtubeviewer
+package net.jackowski.youtubeviewer.util
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import net.jackowski.youtubeviewer.MainActivity
+import net.jackowski.youtubeviewer.R
 import net.jackowski.youtubeviewer.model.SearchResult
-import net.jackowski.youtubeviewer.util.SearchResultAdapter
 
 class SearchResultsFragment(private val searchResults: List<SearchResult>) : Fragment() {
     override fun onCreateView(
