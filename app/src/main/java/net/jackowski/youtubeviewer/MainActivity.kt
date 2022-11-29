@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import net.jackowski.youtubeviewer.model.SearchResult
-import net.jackowski.youtubeviewer.util.SearchResultsFragment
+import net.jackowski.youtubeviewer.util.CacheManager
 import net.jackowski.youtubeviewer.util.TitleFragment
 import java.util.*
 
@@ -40,18 +40,6 @@ class MainActivity : AppCompatActivity() {
                 Locale.getDefault().country
             )
         }
+        CacheManager.download(this, searchResults)
     }
 }
-/*
-
-fun checkIfConnectedToInternet(applicationContext: Context): Boolean {
-    val connectivityManager = applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    val activeNetwork = connectivityManager.getNetworkCapabilities(
-        connectivityManager.activeNetwork ?: return false
-    ) ?: return false
-    return when {
-        activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-        activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-        else -> false
-    }
-}*/

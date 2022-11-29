@@ -1,9 +1,6 @@
 package net.jackowski.youtubeviewer.util
 
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.transition.AutoTransition
 import android.transition.TransitionManager
 import android.view.LayoutInflater
@@ -12,13 +9,13 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import net.jackowski.youtubeviewer.MainActivity
 import net.jackowski.youtubeviewer.R
 import net.jackowski.youtubeviewer.model.SearchResult
 import org.joda.time.DateTime
-import java.net.URL
-import java.util.concurrent.Executors
 
 class SearchResultDetailsFragment(
+    private val mainActivity: MainActivity,
     private val searchResults: List<SearchResult>,
     private val searchResult: SearchResult
 ) : Fragment() {
@@ -78,18 +75,6 @@ class SearchResultDetailsFragment(
     private fun getThumbnail(imageView: ImageView, searchResult: SearchResult) {
         imageView.layoutParams.height = searchResult.snippet.thumbnails.high.height
         imageView.layoutParams.width = searchResult.snippet.thumbnails.high.width
-        Executors.newSingleThreadExecutor().execute {
-            try {
-                val image =
-                    BitmapFactory.decodeStream(URL(searchResult.snippet.thumbnails.high.url).openStream())
-                Handler(Looper.getMainLooper()).post {
-                    imageView.setImageBitmap(image)
-                }
-            } catch (e: java.lang.Exception) {
-                Handler(Looper.getMainLooper()).post {
-                    imageView.setImageResource(R.drawable.placeholder)
-                }
-            }
-        }
+        CacheManager.getThumbnail(imageView, mainActivity, searchResult)
     }
 }
