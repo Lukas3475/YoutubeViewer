@@ -23,8 +23,13 @@ object CacheManager {
             if (!checkIfConnectedToInternet(mainActivity.applicationContext)) {
                 val fileName =
                     "${mainActivity.cacheDir}/${searchResult.snippet.publishedAt}-${searchResult.snippet.title}.png"
-                image = BitmapFactory.decodeStream(FileInputStream(File(fileName)))
-                mainActivity.runOnUiThread { imageView.setImageBitmap(image) }
+                val file = File(fileName)
+                if (!file.exists()) {
+                    mainActivity.runOnUiThread { imageView.setImageResource(R.drawable.placeholder) }
+                } else {
+                    image = BitmapFactory.decodeStream(FileInputStream(file))
+                    mainActivity.runOnUiThread { imageView.setImageBitmap(image) }
+                }
             } else {
                 val url = URL(searchResult.snippet.thumbnails.high.url)
                 if ((url.openConnection() as HttpURLConnection).responseCode == HttpURLConnection.HTTP_NOT_FOUND) {
